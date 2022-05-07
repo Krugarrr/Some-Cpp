@@ -35,6 +35,7 @@ public:
     Polynomial operator*(const Polynomial& other);
     Polynomial operator*=(const Polynomial& other);
     Polynomial operator*=(int value);
+    Polynomial operator*(int value);
 
     Polynomial operator/(int value);
     Polynomial operator/=(int value);

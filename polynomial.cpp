@@ -75,16 +75,21 @@ Polynomial Polynomial::operator*=(const Polynomial& other) {
     return *this;
 }
 
-Polynomial Polynomial::operator*=(int value){
-    for(size_t i = 0; i < coefficients_.size(); ++i) {
-        coefficients_[i] *= value;
-    }
-}
-
 Polynomial Polynomial::operator*(const Polynomial& other) {
     Polynomial multiplication(*this);
     multiplication *= other;
     return multiplication;
+}
+Polynomial Polynomial::operator*=(int value) {
+    for (int i = 0; i < this->coefficients_.size(); ++i) {
+        coefficients_[i] *= value;
+    }
+    return *this;
+}
+
+Polynomial Polynomial::operator*(int value) {
+    *this *= value;
+    return *this;
 }
 
 Polynomial Polynomial::operator/=(int value) {

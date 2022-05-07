@@ -42,10 +42,14 @@ int main(){
     std::cout << "First: " << first_poly << std::endl;
     second_poly = second_poly * second_poly;
     std::cout << "Second: " << second_poly << std::endl;
+    fourth_poly *= 2;
+    std::cout << "Fourth: " << fourth_poly << std::endl;
     fourth_poly = fourth_poly * 2;
     std::cout << "Fourth: " << fourth_poly << std::endl;
 
     std::cout << "\nDivision______________________________ " << std::endl;
+    fourth_poly = fourth_poly / 2;
+    std::cout << "Fourth: " << fourth_poly << std::endl;
     fourth_poly /= 2;
     std::cout << "Fourth: " << fourth_poly << std::endl;
 

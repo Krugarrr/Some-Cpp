@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <memory>
 #include <initializer_list>
+#include <iterator>
 
 
 class Polynomial {
@@ -56,6 +57,7 @@ public:
 
 private:
     std::vector<int> coefficients_;
+    void cleaning();
 };
 
 

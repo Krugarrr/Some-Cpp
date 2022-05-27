@@ -7,6 +7,7 @@ Polynomial::Polynomial(int degree_) : coefficients_(degree_) {}
 
 Polynomial::Polynomial(std::initializer_list<int> numbers_) {
     coefficients_.assign(std::begin(numbers_), std::end(numbers_));
+    cleaning();
 }
 
 Polynomial::Polynomial(const Polynomial& other) : coefficients_(other.coefficients_) {}
@@ -30,6 +31,7 @@ Polynomial Polynomial::operator+=(const Polynomial other) {
     }
     for (size_t i = 0; i <= other.degree(); ++i)
         coefficients_[i] += other.coefficients_[i];
+    //cleaning();
     return *this;
 }
 
@@ -50,6 +52,7 @@ Polynomial Polynomial::operator-=(const Polynomial& other) {
     }
     for (size_t i = 0; i <= other.degree(); ++i)
         coefficients_[i] -= other.coefficients_[i];
+    cleaning();
     return *this;
 }
 
@@ -72,6 +75,7 @@ Polynomial Polynomial::operator*=(const Polynomial& other) {
         }
     }
     this->coefficients_.swap(multiplication);
+    cleaning();
     return *this;
 }
 
@@ -84,6 +88,7 @@ Polynomial Polynomial::operator*=(int value) {
     for (int i = 0; i < this->coefficients_.size(); ++i) {
         coefficients_[i] *= value;
     }
+
     return *this;
 }
 
@@ -96,6 +101,7 @@ Polynomial Polynomial::operator/=(int value) {
     for (int i = 0; i < this->coefficients_.size(); ++i) {
         coefficients_[i] /= value;
     }
+    cleaning();
     return *this;
 }
 
@@ -113,18 +119,25 @@ const int& Polynomial::operator[](size_t i) const {
 }
 
 std::ostream& operator<<(std::ostream &os, const Polynomial& object) {
-    os << object[object.degree()] << "x^" << object.degree();
-    for (size_t i = object.degree() - 1; i > 0; --i){
-        if (object[i] > 0){
-            os << " + " << object[i] << "x^" << i;
-        }
-        else
-            os << " " << object[i] << "x^" << i;
+    if (object.degree() == 0) {
+        os << object[object.degree()];
+        return os;
     }
-    if (object[0] > 0)
-        os << " + " << object[0];
-    else
-        os << " " << object[0];
+    else {
+        os << object[object.degree()] << "x^" << object.degree();
+        for (size_t i = object.degree() - 1; i > 0; --i){
+            if (object[i] > 0){
+                os << " + " << object[i] << "x^" << i;
+            }
+            else
+                os << " " << object[i] << "x^" << i;
+        }
+        if (object[0] > 0)
+            os << " + " << object[0];
+        else
+            os << " " << object[0];
+    }
+
 }
 
 Polynomial& operator>>(std::istream &is, Polynomial& object) {
@@ -140,5 +153,13 @@ Polynomial::~Polynomial() {}
 
 size_t Polynomial::degree() const {
     return coefficients_.size() - 1;
+}
+
+void Polynomial::cleaning() {
+    if (coefficients_.size() == 1) {
+        return;
+    }
+    auto it = std::find_if(coefficients_.begin() + 1, coefficients_.end(), [](auto i) { return 0 == i; });
+    coefficients_.erase(it, coefficients_.end());
 }
 

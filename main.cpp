@@ -4,8 +4,10 @@
 
 
 int main(){
+
     std::cout << "\nPOLYNOMIAL_____________________________________" << std::endl;
-    Polynomial first_poly({1, 2, -3});
+    Polynomial first_poly({1, 2, 0});
+    Polynomial e({1});
     Polynomial second_poly(first_poly); //copy
     Polynomial third_poly({9, 8, 3});
     Polynomial fourth_poly;
@@ -54,9 +56,9 @@ int main(){
     std::cout << "Fourth: " << fourth_poly << std::endl;
 
     std::cout << "\nIstream___________________________________ " << std::endl;
-    Polynomial fifth_poly(4);
-    std::cin >> fifth_poly;
-    std::cout << "Fifth: " << fifth_poly << std::endl;
+    //Polynomial fifth_poly(4);
+    //std::cin >> fifth_poly;
+    //std::cout << "Fifth: " << fifth_poly << std::endl;
 
     //----------------------------------------------------------------------------------
     std::cout << "\nGEOMETRY_____________________________________" << std::endl;
@@ -100,7 +102,6 @@ int main(){
     std::cout << "Regular polygon's perimeter: " << reg_poly.perimeter() << std::endl;
     std::cout << "Regular polygon's area: " << reg_poly.area() << std::endl;
     std::cout << "_____________________________________ " << std::endl;
-
 
 
     return 0;

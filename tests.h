@@ -4,10 +4,12 @@
 #include "polynomial.h"
 #include "gtest/gtest.h"
 
-typedef Polynomial<3, 2, 1> gpoly;
+std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
+
+typedef Polynomial<10000, 4, 3, 2, 1> gpoly;
 
 TEST(TestName, Subtest_1){
-    ASSERT_TRUE(gpoly::Count<5>::result == 86);
+    ASSERT_TRUE(gpoly::Count<5>::result == 6250586);
 }
 
 TEST(TestName2, Subtest_2){
@@ -15,7 +17,7 @@ TEST(TestName2, Subtest_2){
 }
 
 TEST(TestName3, Subtest_3){
-    EXPECT_TRUE(gpoly::Count<5>::result == 87);
+    EXPECT_TRUE(gpoly::Count<5>::result == 6250585);
 }
 
 TEST(TestName4, Subtest_4){

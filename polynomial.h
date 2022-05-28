@@ -7,7 +7,8 @@
 #include <memory>
 #include <initializer_list>
 #include <iterator>
-
+#include <complex>
+#include <numbers>
 
 class Polynomial {
 public:
@@ -60,5 +61,12 @@ private:
     void cleaning();
 };
 
+typedef std::complex<double> base;
+
+class Fourier {
+public:
+    friend void fft(std::vector<base>& a, bool invert);
+    friend void multiply(const std::vector<int> & a, const std::vector<int> & b, std::vector<int> & res);
+};
 
 #endif //INC_1CPP_LAB_POLYNOMIAL_H

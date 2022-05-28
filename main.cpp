@@ -9,7 +9,7 @@ int main(){
     Polynomial first_poly({1, 2, 0});
     Polynomial e({1});
     Polynomial second_poly(first_poly); //copy
-    Polynomial third_poly({9, 8, 3});
+    Polynomial third_poly({10, 9, 8, 3});
     Polynomial fourth_poly;
     fourth_poly = third_poly; //assign
 
@@ -47,6 +47,8 @@ int main(){
     fourth_poly *= 2;
     std::cout << "Fourth: " << fourth_poly << std::endl;
     fourth_poly = fourth_poly * 2;
+    std::cout << "Fourth: " << fourth_poly << std::endl;
+    fourth_poly = fourth_poly * second_poly;
     std::cout << "Fourth: " << fourth_poly << std::endl;
 
     std::cout << "\nDivision______________________________ " << std::endl;
@@ -102,7 +104,5 @@ int main(){
     std::cout << "Regular polygon's perimeter: " << reg_poly.perimeter() << std::endl;
     std::cout << "Regular polygon's area: " << reg_poly.area() << std::endl;
     std::cout << "_____________________________________ " << std::endl;
-
-
     return 0;
 }

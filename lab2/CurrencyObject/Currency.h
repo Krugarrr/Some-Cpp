@@ -9,6 +9,7 @@ private:
     double value = 0;
     double previous_value = 0;
     double request_sum = 0;
+    int request_count = 0;
     MedianHeap currencies;
 
 public:

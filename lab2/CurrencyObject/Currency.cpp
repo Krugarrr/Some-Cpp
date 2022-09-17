@@ -1,6 +1,6 @@
 #include "Currency.h"
 
-Currency::Currency() : value(0.0), previous_value(0.0), request_sum(0.0) {}
+Currency::Currency() : value(0.0), previous_value(0.0), request_sum(0.0), request_count(0) {}
 
 const double Currency::getValue() {
     return value;
@@ -11,13 +11,11 @@ void Currency::add_currency(double new_value) {
     previous_value = value;
     request_sum += new_value;
     currencies.push(new_value);
+    request_count++;
 }
 
 double Currency::calc_average() {
-    if (currencies.size() == 1) {
-        return request_sum;
-    }
-    return request_sum / currencies.size();
+    return request_sum / request_count;
 }
 
 double Currency::calc_median() {

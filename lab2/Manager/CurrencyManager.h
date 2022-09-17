@@ -15,7 +15,7 @@ private:
 public:
     void request();
     void print();
-    void start(int request_count, int interval);
+    void start(int interval);
     static void is_changed(Currency currency);
     static size_t write_data(char *ptr, size_t size, size_t nmember, std::string* data);
 };

@@ -78,12 +78,14 @@ void CurrencyManager::print() {
               << "___________________________________________________________\n" << std::endl ;
 }
 
-void CurrencyManager::start(int request_count, int interval) {
-    while (request_count > 0) {
+void CurrencyManager::start(int interval) {
+    while (true) {
         request();
         print();
-        request_count--;
         sleep(interval);
+        if (GetAsyncKeyState(VK_SPACE)) { //Press SPACE to stop (from windows.h)
+            break;
+        }
     }
 }
 

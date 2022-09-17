@@ -97,12 +97,16 @@ namespace algo {
     template<typename BidiIter, typename T>
     BidiIter find_backward(BidiIter first, BidiIter last, const T& x) {
         last--;
+        BidiIter end = last;
         for (auto it = last; it > first; --it) {
             if (*it == x) {
                 return it;
             }
         }
-        return first;
+        if (*first == x) {
+            return first;
+        }
+        return end;
     }
 
 

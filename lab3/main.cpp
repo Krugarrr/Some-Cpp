@@ -116,7 +116,8 @@ int main()
     cout << b << ": algo::is_partitioned: " <<  algo::is_partitioned(b.begin(), b.end(), [](int i){ return i > 10; }) << '\n';
     cout << '\n';
 
-    cout << b <<  "backward == 31?   " << *algo::find_backward(c.begin(), c.end(), 31) << '\n';
+    for (auto i : c) std::cout << i << ' ';
+    cout << "backward == 31?   " << *algo::find_backward(c.begin(), c.end(), 31) << '\n';
     cout << b <<  "backward == 31?   " << *algo::find_backward(b.begin(), b. end(), 31) << '\n';
     cout << b <<  "backward == 6?    " << *algo::find_backward(b.begin(), b. end(), 6) << '\n';
     cout << '\n';
@@ -129,5 +130,21 @@ int main()
     cout << a << '\n';
     cout << algo::is_palindrome(a.begin(), a.end(), [](int i, int j){ return i == j; });
 
+
+    circular_buffer<int> d;
+    d.change_capacity(10);
+    d.push_back(3);
+    d.push_back(4);
+    d.push_back(5);
+    d.push_front(2);
+    d.push_back(9);
+    d.push_front(1);
+    d.push_front(8);
+    d.pop_back();
+    d.pop_front();
+    d.push_back(6);
+    d.push_front(0);
+
+    cout << d;
     return 0;
 }

@@ -4,6 +4,6 @@
 int main() {
     setlocale(LC_ALL,"Russian");
     CurrencyManager manager;
-    manager.start(1, 1);
+    manager.start(5);
     return 0;
 }
